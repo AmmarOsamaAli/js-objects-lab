@@ -170,7 +170,7 @@ const game = {
     ],
     items: [
         { name: "potion", quantity: 4 },
-        { name: "pokeball", quantity: 8 },
+        { name: "pokeball", quantity: 100 },
         { name: "rare candy", quantity: 99 },
     ],
 }
@@ -326,50 +326,47 @@ console.log('---------------------------------------')
 
 
 //Excersise 20
+/*
+Exercise 20
+Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify is so that you can just pass in 
+the name of a Pokemon instead of an entire object, and the method will look up the Pokemon from the data set for you.
+
+The string passed in should be allowed to be any case (for example, if the string 
+'PiKacHU' is passed to the function, it should match to 'Pikachu' in the data set). 
+
+If there is not a match, then return a string noting that the selected Pokemon does not exist. 
+Ensure you do not decrement the pokeball count if an invalid Pokemon name is passed in, and also ensure 
+that the Pokemon isn't added to the `game.party` or the `game.collection`.
+
+Solve Exercise 20 here:
+*/
 console.log('Excersise 20:')
-game.catchPokemon = function (pokemonName) {
-    for (let onePokemon of pokemonName) {
-        if (onePokemon.includes(pokemonName)) {
-            game.items[1].quantity -= 1
-            if (game.items[1].quantity > 0) {
-                if (game.party.length < 6) {
-                    game.party.push(pokemonObj)
-                }
-                else {
-                    game.collection.push(pokemonObj)
-                }
+game.catchPokemon = (pokemonName) => {
+    const foundPokemon = pokemon.find(function (onePoken) { return onePoken.name === pokemonName })
+    if (foundPokemon) {
+        console.log("FOUND POKEMON ", foundPokemon)
+        game.items[1].quantity -= 1
+        if (game.items[1].quantity > 0) {
+            if (game.party.length < 6) {
+                game.party.push(foundPokemon)
+                return game.party
             }
             else {
-                console.log('There are no more pokeballs')
+                game.collection.push(foundPokemon)
+                return game.collection
+
             }
+
         }
         else {
-            console.log("There is no such Pokemone")
+            console.log("NO POKEBALL")
         }
-
+    }
+    else {
+        console.log('Pokemon Not Found')
     }
 }
 
-console.log(game.catchPokemon('Pikachu'))
+console.log(game.catchPokemon('Cloyster'))
 console.log('---------------------------------------')
 
-
-//Excersise 21
-console.log('Excersise 21:')
-let pokemonType = function (obj, number, name, type, hp, starter) {
-    this.obj = obj
-    this.number = number
-    this.name = name
-    this.type = type
-    this.hp = hp
-    this.starter = starter
-}
-
-// pokemon.forEach(function(onePokemon){})
-
-let pokemonType1 = new pokemonType(pokemon[1], pokemon.number,
-    pokemon.name, pokemon.type, pokemon.hp, pokemon.starter)
-
-
-
-console.log(pokemonType.pokemon)
