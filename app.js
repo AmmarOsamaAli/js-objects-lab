@@ -342,7 +342,7 @@ Solve Exercise 20 here:
 */
 console.log('Excersise 20:')
 game.catchPokemon = (pokemonName) => {
-    const foundPokemon = pokemon.find(function (onePoken) { return onePoken.name === pokemonName })
+    const foundPokemon = pokemon.find(function (onePokemon) { return onePokemon.name === pokemonName })
     if (foundPokemon) {
         console.log("FOUND POKEMON ", foundPokemon)
         game.items[1].quantity -= 1
