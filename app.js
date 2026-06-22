@@ -175,30 +175,38 @@ const game = {
     ],
 }
 
-//Excersise 3:
+//Excersise 3
+console.log('Excersise 3:')
 game.difficulty = ('Hard')
 
-//Excersise 4:
+
+//Excersise 4
+console.log('Excersise 4:')
 game.party.push(pokemon[24])
 
-//Excersise 5:
+
+//Excersise 5
+console.log('Excersise 5:')
 game.party.push(pokemon[5])
 game.party.push(pokemon[32])
 game.party.push(pokemon[81])
 
+
 //Excersise 6
+console.log('Excersise 6:')
 game.gyms.forEach(function (oneGym) {
     if (oneGym.difficulty < 3)
         oneGym.completed = true;
 })
 
 
-
 //Excersise 7
+console.log('Excersise 7:')
 game.party.splice(0, 1, pokemon[25])
 
 
 //Excersise 8
+console.log('Excersise 8:')
 game.party.forEach(function (onePokemon) {
     console.log(onePokemon.name)
 })
@@ -206,7 +214,10 @@ game.party.forEach(function (onePokemon) {
 console.log('---------------------------------------')
 
 
+
+
 //Excersise 9
+console.log('Excersise 9:')
 pokemon.forEach(function (starterPokemon) {
     if (starterPokemon.starter === true)
         console.log(starterPokemon)
@@ -215,7 +226,9 @@ pokemon.forEach(function (starterPokemon) {
 console.log('---------------------------------------')
 
 
+
 //Excersise 10
+console.log('Excersise 10:')
 game.catchPokemon = function (pokemonObj) {
     game.party.push(pokemonObj)
 }
@@ -224,6 +237,7 @@ game.catchPokemon(pokemon[15])
 
 
 //Excersise 11
+console.log('Excersise 11:')
 game.catchPokemon = function (pokemonObj) {
     game.party.push(pokemonObj)
     game.items[1].quantity -= 1
@@ -235,6 +249,7 @@ console.log('---------------------------------------')
 
 
 //Excersise 12
+console.log('Excersise 12:')
 game.gyms.forEach(function (oneGym) {
     if (oneGym.difficulty < 6)
         oneGym.completed = true;
@@ -244,25 +259,117 @@ game.gyms.forEach(function (oneGym) {
 
 // Level Up
 
-// // Excersise 17
-// game.party.sort(function (a, b) {
-//     return b.hp - a.hp
-// })
+// Excersise 17
+console.log('Excersise 17:')
+game.party.sort(function (a, b) {
+    return b.hp - a.hp
+})
+
+console.log(game.party)
+console.log('---------------------------------------')
 
 
-// //Excersise 18
-// game.collection = [
-//     game.catchPokemon = function (pokemonObj) {
-//         game.party.push(pokemonObj)
-//         game.items[1].quantity -= 1
-//         if(game.party.length > 6)
+//Excersise 18
+console.log('Excersise 18:')
+game.collection = []
+game.catchPokemon = function (pokemonObj) {
 
-        
-//     }
-// ]
+    game.items[1].quantity -= 1
+    if (game.party.length >= 6) {
+        game.collection.push(pokemonObj)
+    }
+    else {
+        game.party.push(pokemonObj)
 
-// console.log(game.party)
-// game.catchPokemon(pokemon[55])
+    }
+}
 
-// console.log(game.party)
+game.catchPokemon(pokemon[56])
+console.log(game.party)
+console.log(game.collection)
 
+console.log('---------------------------------------')
+
+
+//Excersise 19
+console.log('Excersise 19:')
+game.catchPokemon = function (pokemonObj) {
+
+    game.items[1].quantity -= 1
+    if (game.items[1].quantity > 0) {
+        if (game.party.length < 6) {
+            game.party.push(pokemonObj)
+        }
+        else {
+            game.collection.push(pokemonObj)
+        }
+    }
+    else {
+        console.log('There are no more pokeballs')
+    }
+}
+
+console.log(game.items)
+console.log(game.party)
+console.log(game.collection)
+
+game.catchPokemon(pokemon[3])
+game.catchPokemon(pokemon[4])
+game.catchPokemon(pokemon[6])
+game.catchPokemon(pokemon[7])
+game.catchPokemon(pokemon[8])
+game.catchPokemon(pokemon[9])
+
+
+
+console.log('---------------------------------------')
+
+
+//Excersise 20
+console.log('Excersise 20:')
+game.catchPokemon = function (pokemonName) {
+    for (let onePokemon of pokemonName) {
+        if (onePokemon.includes(pokemonName)) {
+            game.items[1].quantity -= 1
+            if (game.items[1].quantity > 0) {
+                if (game.party.length < 6) {
+                    game.party.push(pokemonObj)
+                }
+                else {
+                    game.collection.push(pokemonObj)
+                }
+            }
+            else {
+                console.log('There are no more pokeballs')
+            }
+        }
+        else {
+            console.log("There is no such Pokemone")
+        }
+
+    }
+}
+
+console.log(game.catchPokemon('Pikachu'))
+console.log('---------------------------------------')
+
+
+//Excersise 21
+console.log('Excersise 21:')
+let pokemonType = function (obj, number, name, type, hp, starter) {
+    this.obj = obj
+    this.number = number
+    this.name = name
+    this.type = type
+    this.hp = hp
+    this.starter = starter
+}
+
+// pokemon.forEach(function(onePokemon){})
+
+let pokemonType1 = new pokemonType(pokemon[1], pokemon.number,
+    pokemon.name, pokemon.type, pokemon.hp, pokemon.starter)
+
+
+
+console.log(pokemonType.pokemon)
